@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Calendario dell'Avvento</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <img class="ghirlanda" src="img/ghirlanda.png" alt="Ghirlanda di Natale">
+  </header>
+
+  <main>
+    <h1 class="titolo">Calendario dell’Avvento</h1>
+    <div id="calendar" class="calendar" role="grid" aria-label="Calendario dell'avvento"></div>
+  </main>
+
+  <!-- MODAL LETTERA -->
+  <div id="letterModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close" aria-label="Chiudi lettera">&times;</button>
+      <h2>Giorno <span id="dayNumber"></span></h2>
+      <div id="letterText" class="letter-area"></div>
+      <!-- Bottone Gioca (inserito dinamicamente se il giorno ha gioco) -->
+      <div id="playGameWrapper" style="margin-top:12px;"></div>
+    </div>
+  </div>
+
+  <!-- MODALI GIOCHI (separati) -->
+<!-- GIOCO 5 — INDOVINA IL RICORDO -->
+<div id="ricordoGame" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeRicordo()">&times;</span>
+
+        <h2 style="text-align:center; margin-bottom:15px;">💖 Indovina il Ricordo 💖</h2>
+
+        <div id="ricordoQuestion" style="font-size:18px; margin-bottom:20px;"></div>
+
+        <div id="ricordoOptions" class="ricordo-buttons"></div>
+
+        <div id="ricordoResult" style="margin-top:20px; font-weight:bold;"></div>
+
+        <button id="nextRicordo" style="display:none; margin-top:20px;">Prossimo</button>
+    </div>
+</div>
+
+
+  <!-- GIOCO 10 -->
+  <!-- GIOCO 10 — PUZZLE -->
+<div id="gameModal-10" class="modal modal-game" aria-hidden="true">
+  <div class="modal-content">
+    <button class="close game-close" data-game="10">&times;</button>
+    <h3>🧩 Puzzle d'Amore</h3>
+    <p>Ricompone la nostra foto ❤️</p>
+
+    <div id="puzzleContainer" 
+         style="width:300px;height:300px;margin:12px auto;display:grid;grid-template-columns:repeat(3,1fr);gap:4px;">
+    </div>
+
+    <p id="puzzleMsg" style="text-align:center;margin-top:10px;"></p>
+    <div style="text-align:center;margin-top:10px;">
+      <button id="resetPuzzle">Reset Puzzle</button>
+    </div>
+  </div>
+</div>
+
+
+  <!-- GIOCO 15 -->
+  <div id="gameModal-15" class="modal modal-game" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close game-close" data-game="15">&times;</button>
+      <h3>🃏 Memory (trova tutte le coppie)</h3>
+      <div class="memory-grid" id="memoryGrid" aria-live="polite" style="margin-top:12px;">
+        <!-- le carte saranno popolata da main.js -->
+      </div>
+      <p id="memoryMsg" style="text-align:center;margin-top:10px"></p>
+      <div style="text-align:center;margin-top:10px;"><button id="resetMemory">Reset</button></div>
+    </div>
+  </div>
+
+  <!-- GIOCO 20 -->
+<!-- GAME 20 — Parola Misteriosa -->
+<!-- CORREGGI a: aggiungi la classe "modal" -->
+<div id="gameModal-20" class="modal modal-game" aria-hidden="true">
+  <div class="modal-content game-content">
+    <span class="game-close" data-game="20">&times;</span>
+
+    <h2 class="game-title">🔤 Parola Misteriosa</h2>
+    <p style="text-align:center; margin-bottom:10px;">
+      Indovina la frase amore mio ❤️
+    </p>
+
+    <div id="misteryPhrase" class="mistery-phrase"></div>
+
+    <div id="lettersContainer" class="letters-container"></div>
+
+    <p id="misteryMessage" class="mistery-message"></p>
+  </div>
+</div>
+
+
+
+  <canvas id="snow" aria-hidden="true"></canvas>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
